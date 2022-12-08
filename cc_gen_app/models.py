@@ -39,10 +39,9 @@ class User(models.Model):
 class Comment(models.Model):
     creditcard = models.ForeignKey(
         CreditCard, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(Category, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    status = models.BooleanField(default=True)
 
     class Meta:
         ordering = ('created_on',)
